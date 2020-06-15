@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>俗了清秋</title>
+  
+  <subtitle>俗了清秋</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://GHwangxingren.github.io.git/"/>
+  <updated>2020-06-15T02:59:19.608Z</updated>
+  <id>https://GHwangxingren.github.io.git/</id>
+  
+  <author>
+    <name>王兴仁</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nuxt--默认模板app.html</title>
+    <link href="https://GHwangxingren.github.io.git/2020/06/15/nuxt-mo-ren-mo-ban-app-html/"/>
+    <id>https://GHwangxingren.github.io.git/2020/06/15/nuxt-mo-ren-mo-ban-app-html/</id>
+    <published>2020-06-15T01:53:13.000Z</published>
+    <updated>2020-06-15T02:59:19.608Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;所在公司官网移动端H5采用的vue的服务端渲染框架–Nuxt，因为要考虑到官网的SEO。目前我也是在人家代码上进行小迭代，从初次接触Nuxt开始，现在也已经逐渐熟悉，包括&lt;code&gt;head&lt;/code&gt;Api，&lt;code&gt;asyncData&lt;/code&gt;api等，但最近进
+        
+      
+    
+    </summary>
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/categories/%E6%88%90%E9%95%BF/"/>
+    
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/tags/%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vuex动态注册模块与plugins初步理解与应用</title>
+    <link href="https://GHwangxingren.github.io.git/2019/11/16/vuex-dong-tai-zhu-ce-mo-kuai-yu-plugins-chu-bu-li-jie-yu-ying-yong/"/>
+    <id>https://GHwangxingren.github.io.git/2019/11/16/vuex-dong-tai-zhu-ce-mo-kuai-yu-plugins-chu-bu-li-jie-yu-ying-yong/</id>
+    <published>2019-11-16T05:38:49.000Z</published>
+    <updated>2020-06-15T01:38:37.644Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;大家在项目中应该都做过或者使用过loading效果吧，首先看一下效果图：&lt;br&gt;&lt;img src=&quot;loading%E6%95%88%E6%9E%9C.gif&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/categories/%E6%88%90%E9%95%BF/"/>
+    
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/tags/%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS设计模式之策略模式</title>
+    <link href="https://GHwangxingren.github.io.git/2019/11/12/js-she-ji-mo-shi-zhi-ce-lue-mo-shi/"/>
+    <id>https://GHwangxingren.github.io.git/2019/11/12/js-she-ji-mo-shi-zhi-ce-lue-mo-shi/</id>
+    <published>2019-11-12T06:57:35.000Z</published>
+    <updated>2020-06-15T01:38:37.639Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;总结一下学习策略模式收获的知识。&lt;/p&gt;
+&lt;h2 id=&quot;策略模式的定义与理解&quot;&gt;&lt;a href=&quot;#策略模式的定义与理解&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="设计模式" scheme="https://GHwangxingren.github.io.git/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计模式" scheme="https://GHwangxingren.github.io.git/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记一次vue-awesome-swiper踩坑</title>
+    <link href="https://GHwangxingren.github.io.git/2019/11/07/ji-yi-ci-vue-awesome-swiper-cai-keng/"/>
+    <id>https://GHwangxingren.github.io.git/2019/11/07/ji-yi-ci-vue-awesome-swiper-cai-keng/</id>
+    <published>2019-11-07T06:07:56.000Z</published>
+    <updated>2020-06-15T01:38:37.750Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在做项目的时候，有个需求，就是在选择酒店的时候，如果酒店超过四张，就要用轮播图的结构来实现，场景如下：&lt;br&gt;&lt;img src=&quot;swiper1.png&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/categories/%E6%88%90%E9%95%BF/"/>
+    
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/tags/%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1px引发的思考</title>
+    <link href="https://GHwangxingren.github.io.git/2019/08/31/1px-think/"/>
+    <id>https://GHwangxingren.github.io.git/2019/08/31/1px-think/</id>
+    <published>2019-08-31T10:43:41.000Z</published>
+    <updated>2020-06-15T01:38:37.636Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天下午被财务部叫去喝了一杯“卡布奇诺”，原因真的是难以启齿啊，看了标题你们大概已经猜到了，没错，就是1px的问题，再具体点说，我脑子抽了，将字体font-size设置为1px，what？&lt;br&gt;&lt;img src=&quot;4.jpg&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://GHwangxingren.github.io.git/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://GHwangxingren.github.io.git/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day One</title>
+    <link href="https://GHwangxingren.github.io.git/2019/08/29/first-blog/"/>
+    <id>https://GHwangxingren.github.io.git/2019/08/29/first-blog/</id>
+    <published>2019-08-29T08:30:09.000Z</published>
+    <updated>2020-06-15T01:38:37.640Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;div align=&quot;middle&quot;&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://GHwangxingren.github.io.git/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://GHwangxingren.github.io.git/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>

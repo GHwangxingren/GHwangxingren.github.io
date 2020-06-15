@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Nuxt--默认模板app.html</title>
+      <link href="/2020/06/15/nuxt-mo-ren-mo-ban-app-html/"/>
+      <url>/2020/06/15/nuxt-mo-ren-mo-ban-app-html/</url>
+      
+        <content type="html"><![CDATA[<p>所在公司官网移动端H5采用的vue的服务端渲染框架–Nuxt，因为要考虑到官网的SEO。目前我也是在人家代码上进行小迭代，从初次接触Nuxt开始，现在也已经逐渐熟悉，包括<code>head</code>Api，<code>asyncData</code>api等，但最近进行一次迭代的时候，要将埋点包从云上引入的方式改为本地引入方式，刚开始也是试了各种方式，但都没走通，只能去问大佬，然后大佬打开nuxt官网直接给我指出了默认模板的使用，我恍然大悟（其实我第一次知道这个知识点），都怪我没怎么看过文档，好了，下边就具体的说一下。<br><img src="1.jpg" alt><br>需求就是要替换原有的埋点脚本。那么应该加在哪呢？<br>Nuxt中提到了<strong>默认模板</strong>，官方并没有详细的解释说明，默认模板为：</p><pre><code>&lt;!--定制化默认的 html 模板，只需要在应用根目录下创建一个 app.html 的文件。--&gt;&lt;!-- 举个例子，你可以修改模板添加 IE 的条件表达式： --&gt;&lt;!DOCTYPE html&gt;&lt;!--[if IE 9]&gt;&lt;html lang=&quot;en-US&quot; class=&quot;lt-ie9 ie9&quot; {{ HTML_ATTRS }}&gt;&lt;![endif]--&gt;&lt;!--[if (gt IE 9)|!(IE)]&gt;&lt;!--&gt;&lt;html {{ HTML_ATTRS }}&gt;&lt;!--&lt;![endif]--&gt;  &lt;head {{ HEAD_ATTRS }}&gt;    {{ HEAD }}  &lt;/head&gt;  &lt;body {{ BODY_ATTRS }}&gt;    {{ APP }}  &lt;/body&gt;&lt;/html&gt;</code></pre><p>比如，现在我们希望每个页面的最上边都加入”Hello Nuxt”这几个字，我们就可以使用默认模板来完成。</p><pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    {{HEAD}}&lt;/head&gt;&lt;body&gt;    &lt;p&gt;Hello Nuxt&lt;/p&gt;    {{APP}}&lt;/body&gt;&lt;/html&gt;</code></pre><p>这里的<code></code>读取的是<code>nuxt.config.js</code>里的信息，<code></code>就是我们写的pages文件夹下的主体页面了。需要注意的是HEAD和APP都需要大写。(<strong>注：</strong>添加完默认模板之后，要记得重启服务)<br><img src="2.png" alt><br>第一行就是默认模板里加的，会在每个页面中显示出来，而第二行的需要说到另一个概念<strong>默认布局</strong>，和默认模板的功能类似，但是从名字上你就可以看出来，默认布局主要针对页面的统一布局使用。它在根目录的<code>layouts/default.vue</code>。需要注意的是在默认布局里不要加入头部信息，只是关于<code>&lt;template&gt;</code>标签下的内容统一订制。</p><blockquote><p><strong>它们俩的区分也很容易理解：模板可以订制头部信息，包括IE版本的判断，脚本的引入等；布局只能订制<code>&lt;template&gt;</code>里的内容。</strong></p></blockquote><p>这次的迭代我就针对默认模板的这一特性进行使用。首先现在src下或者根目录创建一个<code>app.html</code>，名字是固定的，接着上代码：</p><pre><code>&lt;!DOCTYPE html&gt;&lt;html {{ HTML_ATTRS }}&gt;  &lt;head&gt;    {{ HEAD }}    &lt;script type=&quot;text/javascript&quot;&gt;        (function(para) {            …………        }({            name: &#39;sa&#39;,            sdk_url: &quot;/lib/sensorsdata.1.15.6.min.js&quot;,            web_url: &#39;接收地址&#39;,               server_url: &#39;接收地址&#39;,            heatmap:{},            show_log: false,            max_string_length: 1024,            source_type: {                keyword: {baidu:[&#39;wd&#39;,&#39;word&#39;,&#39;keyword&#39;], sogou:[&#39;query&#39;,&#39;keyword&#39;]}            }        }));    &lt;/script&gt;  &lt;/head&gt;  &lt;body {{ BODY_ATTRS }}&gt;    {{ APP }}  &lt;/body&gt;&lt;/html&gt;</code></pre><p>通过<code>script</code>标签引入的一段代码就是埋点脚本，这样就可以全局抓取数据了，是不是很简单呢？有兴趣的话大家可以看一下官方文档，nuxt服务端渲染的一些api还是很有意思的，大家也可以试一下！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 成长 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 成长 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vuex动态注册模块与plugins初步理解与应用</title>
+      <link href="/2019/11/16/vuex-dong-tai-zhu-ce-mo-kuai-yu-plugins-chu-bu-li-jie-yu-ying-yong/"/>
+      <url>/2019/11/16/vuex-dong-tai-zhu-ce-mo-kuai-yu-plugins-chu-bu-li-jie-yu-ying-yong/</url>
+      
+        <content type="html"><![CDATA[<p>大家在项目中应该都做过或者使用过loading效果吧，首先看一下效果图：<br><img src="loading%E6%95%88%E6%9E%9C.gif" alt="loading效果图"><br>看到这样的效果大家一般都是怎么使用呢？估计很多人都会说：引用组件呗。但是如果没有现成的呢，只能自己去实现了，而且实现的方法也是多种多样的。在vue项目中，无非就是在接口请求前后复制loading变量true或者false来控制loading效果的现实与隐藏。而在上边的效果图中，我则是运用 <strong>vuex</strong> 的动态模块注册与plugins插件来实现的，通过这样的方式，有时候可以很好的解决一些异步操作的需求，当然这也是我初步学习vuex，之前很少用，甚至动态注册与插件也是刚刚了解！现在就看看具体是怎么实现的吧！</p><p>vuex的基本的设置和使用就不多说了，可以参考<a href="https://vuex.vuejs.org/zh/api/" target="_blank" rel="noopener">vuex官网</a>。首先在store目录下新建一个module文件夹，放置自己新建的vuex模块文件，然后新建一个文件text.js（名字随便）。内容如下：</p><pre><code>// text.jsconst state = {  number: 1};const actions = {    onePlusAsync({commit},payload){        return new Promise((resolve,reject)=&gt;{            setTimeout(()=&gt;{                commit(&#39;onePlus&#39;,payload);                  resolve()              },1500)        })    }};const mutations = {    onePlus(state,payload){        state.number = state.number+payload    }}export default {    namespaced:true,    state,    actions,    mutations}</code></pre><p>然后项目里放置方法文件或其他地方新建一个js文件，名字也可以随意，内容如下：</p><pre><code>// vuex-loading.jsconst NAMESPACED = &#39;myLoading&#39;;const createLoadingPlugin = ({namespaced =NAMESPACED}={})=&gt;{    return store =&gt;{        if(store.state[namespaced]){ // 如果已经有myLoading的vuex模块，抛出一个错误            throw new Error(&#39;createLoadingPlugin is exited in current store&#39;);        }            store.registerModule(namespaced,{ // 动态创建一个myLoading模块            namespaced:true,            state:{                 flag: true, // 用于测试是否成功                effects:{}            },            mutations:{                show(state,payload){                    state.effects = {                        ...state.effects, // 对象的解构                        [payload]:true   // 会覆盖上边解构的，也就是上一轮的值                    }                    },                hide(state,payload){                    state.effects = {                        ...state.effects,                        [payload]:false                    }                   }            }        })        store.subscribeAction({ 指定订阅处理函数的被调用在一个 action 分发之前和之后各自的动作行为 (默认行为是之前)。            before: (action, state) =&gt; { // action派发前，显示loading效果              store.commit(namespaced+&#39;/show&#39;,action.type) // action.type作为effects对象的名称            },            after: (action, state) =&gt; { // action派发前，取消loading效果              store.commit(namespaced+&#39;/hide&#39;,action.type)             }          })    }}export default createLoadingPlugin;</code></pre><p>注册好vue模块和插件之后，在store文件夹的index下进行配置：</p><pre><code>import Vue from &#39;vue&#39;;import Vuex from &#39;vuex&#39;;import createLoadingPlugin from &#39;utils/vuex-loading&#39;;import test from &#39;./module/test&#39;;Vue.use(Vuex);export default new Vuex.Store({  plugins: [createLoadingPlugin()],  state: {  },  mutations: {  },  actions: {  },  modules: {    test  },});</code></pre><p>具体的使用方法如下（部分代码）：</p><pre><code>&lt;template&gt;    ······    &lt;div class=&quot;btnValue&quot;&gt;      {{$store.state.myLoading.flag}}      &lt;span&gt;当前的数据 {{$store.state.test.number}}&lt;/span&gt;        &lt;van-button type=&quot;primary&quot; @click=&quot;add&quot; :loading=&quot;loading&quot;&gt;异步按钮+1&lt;/van-button&gt;        &lt;van-button type=&quot;info&quot; @click=&quot;addOne&quot;&gt;同步按钮+1&lt;/van-button&gt;    &lt;/div&gt;    ······&lt;/template&gt;&lt;script&gt;import {mapState,mapMutations,mapActions} from &#39;vuex&#39;;export default {  ······  computed:{    ...mapState({loading:state=&gt;state.myLoading.effects[&#39;test/onePlusAsync&#39;]})  },  methods:{    add(){        this.onePlusAsync(1)    },    addOne(){        this.onePlus(1)    },    ...mapMutations({onePlus:&#39;test/onePlus&#39;}),    ...mapActions({onePlusAsync:&#39;test/onePlusAsync&#39;}) // test/onePlusAsync 会成为动态注册中的state的effects的一个属性名  }};&lt;/script&gt;</code></pre><p>以上就是这次对vuex的实践与初步应用，对我来说，虽然vuex在项目中用到的地方并不多，但是学习一下还是很有必要的，而且也可以实现loading效果这样异步需要的骚操作！顺便附上<a href="https://github.com/GHwangxingren/vuex-loading.git" target="_blank" rel="noopener">loading效果github地址</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 成长 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 成长 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JS设计模式之策略模式</title>
+      <link href="/2019/11/12/js-she-ji-mo-shi-zhi-ce-lue-mo-shi/"/>
+      <url>/2019/11/12/js-she-ji-mo-shi-zhi-ce-lue-mo-shi/</url>
+      
+        <content type="html"><![CDATA[<p>总结一下学习策略模式收获的知识。</p><h2 id="策略模式的定义与理解"><a href="#策略模式的定义与理解" class="headerlink" title="策略模式的定义与理解"></a>策略模式的定义与理解</h2><p><strong>策略模式：定义一些列的算法，把它们一个个封装起来，并且使它们可以相互替换。</strong><br>如果这么简单的大白话还不是太明白，那就引用文章的一句话：“条条大路通罗马”。再比如你去一个地方旅游，可以乘飞机去，可以坐火车去，也可以自驾去……<br><img src="demo.png" alt><br>尽管采用的方式不同，但是我们可以根据情况选择一中适合的方式到达目的地，而且可以随意互相替换。这种解决方案就是所要说的策略模式。文章中引用“奖金的计算”、“缓动动画”、”表单校验“三个例子分别从模仿传统面向对象语言和策略模式两个方面进行了阐述与讲解，在这里我就只采用表单验证的例子。</p><h2 id="传统表单验证"><a href="#传统表单验证" class="headerlink" title="传统表单验证"></a>传统表单验证</h2><pre><code>&lt;html&gt;    &lt;body&gt;        &lt;form action=&quot;http://xxx.com/register&quot; id=&quot;registerForm&quot; method=&quot;post&quot;&gt;            请输入用户名:&lt;input type=&quot;text&quot; name=&quot;userName&quot;/ &gt;             请输入密码:&lt;input type=&quot;text&quot; name=&quot;password&quot;/ &gt;            请输入手机号码:&lt;input type=&quot;text&quot; name=&quot;phoneNumber&quot;/ &gt;            &lt;button&gt;提交&lt;/button&gt;        &lt;/form&gt;        &lt;script&gt;            var registerForm = document.getElementById( &#39;registerForm&#39; );            registerForm.onsubmit = function(){                if ( registerForm.userName.value === &#39;&#39; ){                    alert ( &#39;用户名不能为空&#39; );                    return false;                 }                if ( registerForm.password.value.length &lt; 6 ){                     alert ( &#39;密码长度不能少于 6 位&#39; );                    return false;                }                if ( !/(^1[3|5|8][0-9]{9}$)/.test( registerForm.phoneNumber.value ) ){                    alert ( &#39;手机号码格式不正确&#39; );                     return false;                }            }        &lt;/script&gt;    &lt;body&gt;&lt;/html&gt;</code></pre><p>这是常见，也是我们习惯的代码编码方式，但是缺点很明显</p><ul><li>registerForm.onsubmit 函数比较庞大，包含了很多 if-else 语句，这些语句需要覆盖所有 的校验规则。</li><li>egisterForm.onsubmit 函数缺乏弹性，如果增加了一种新的校验规则，或者想把密码的长 度校验从 6 改成 8，我们都必须深入 registerForm.onsubmit 函数的内部实现，这是违反开 放—封闭原则的。</li><li>算法的复用性差，如果在程序中增加了另外一个表单，这个表单也需要进行一些类似的 校验，那我们很可能将这些校验逻辑复制得漫天遍野。</li></ul><h2 id="策略模式重构表单验证"><a href="#策略模式重构表单验证" class="headerlink" title="策略模式重构表单验证"></a>策略模式重构表单验证</h2><p>首先我们要清楚，策略模式指的是定义一系列的算法，把它们一个个封装起来。将不变的部分和变化的部分隔开是每个设计模式的主题，策略模式也不例外，策略模式的目的就是将算法的使用与算法的实现分离开来。一个基于策略模式的程序至少由两部分组成。第一个部分是一组策略类，策略类封装了具体 的算法，并负责具体的计算过程。 第二个部分是环境类 Context，Context 接受客户的请求，随后把请求委托给某一个策略类。要做到这点，说明 Context 中要维持对某个策略对象的引用。</p><pre><code>// 第一步把校验逻辑都封装成策略对象var strategies = {    isNonEmpty: function( value, errorMsg ){        if ( value === &#39;&#39; ){                return errorMsg ;        }     },    minLength: function( value, length, errorMsg ){         if ( value.length &lt; length ){            return errorMsg;         }    },    isMobile: function( value, errorMsg ){ // 手机号码格式        if ( !/(^1[3|5|8][0-9]{9}$)/.test( value ) ){             return errorMsg;        }     }};// 接下来我们准备实现 Validator 类。Validator 类在这里作为 Context，负责接收用户的请求，并委托给 strategy 对象。var Validator = function(){    this.cache = []; // 保存校验规则};Validator.prototype.add = function(dom, rule, errorMsg ){    var ary = rule.split( &#39;:&#39; ); // 把 strategy 和参数分开    this.cache.push(function(){ // 把校验的步骤用空函数包装起来，并且放入 cache        var strategy = ary.shift(); // 用户挑选的 strategy        ary.unshift( dom.value ); // 把 input 的 value 添加进参数列表        ary.push( errorMsg ); // 把 errorMsg 添加进参数列表        return strategies[ strategy ].apply(dom, ary)    }); };Validator.prototype.start = function(){    for ( var i = 0, validatorFunc; validatorFunc = this.cache[ i++ ]; ){        var msg = validatorFunc(); // 开始校验，并取得校验后的返回信息         if ( msg ){ // 如果有确切的返回值，说明校验没有通过            return msg;         }    }}// 客户调用的时候就可以这样var registerForm = document.getElementById( &#39;registerForm&#39; );var validataFunc = function(){    var validator = new Validator(); // 创建一个 validator 对象    /***************添加一些校验规则****************/    validator.add( registerForm.userName, &#39;isNonEmpty&#39;, &#39;用户名不能为空&#39; );     validator.add( registerForm.password, &#39;minLength:6&#39;, &#39;密码长度不能少于 6 位&#39; );     validator.add( registerForm.phoneNumber, &#39;isMobile&#39;, &#39;手机号码格式不正确&#39; );    var errorMsg = validator.start(); // 获得校验结果    return errorMsg; // 返回校验结果}registerForm.onsubmit = function(){    var errorMsg = validataFunc(); // 如果 errorMsg 有确切的返回值，说明未通过校验     if ( errorMsg ){        alert ( errorMsg );        return false; // 阻止表单提交     }};</code></pre><p>从这段代码中可以看到，我们先创建了一个 validator 对象，然后通过 validator.add 方法，往 validator 对象中添加一些校验规则。validator.add 方法接受 3 个参数，以下面这句代码说明:<br>    <code>validator.add( registerForm.password, &#39;minLength:6&#39;, &#39;密码长度不能少于 6 位&#39; );</code></p><ul><li>registerForm.password 为参与校验的 input 输入框。</li><li>‘minLength:6’是一个以冒号隔开的字符串。冒号前面的 minLength 代表客户挑选的 strategy 对象，冒号后面的数字 6 表示在校验过程中所必需的一些参数。’minLength:6’的意思就是 校验 registerForm.password 这个文本输入框的 value 最小长度为 6。如果这个字符串中不包含冒号，说明校验过程中不需要额外的参数信息，比如’isNonEmpty’。</li><li>第 3 个参数是当校验未通过时返回的错误信息。<br>当我们往 validator 对象里添加完一系列的校验规则之后，会调用 validator.start()方法来 启动校验。如果 validator.start()返回了一个确切的 errorMsg 字符串当作返回值，说明该次校验 没有通过，此时需让 registerForm.onsubmit 方法返回 false 来阻止表单的提交。<br>使用策略模式重构代码之后，我们仅仅通过“配置”的方式就可以完成一个表单的校验， 这些校验规则也可以复用在程序的任何地方，还能作为插件的形式，方便地被移植到其他项 目中。</li></ul><h2 id="给某个文本输入框添加多种校验规则"><a href="#给某个文本输入框添加多种校验规则" class="headerlink" title="给某个文本输入框添加多种校验规则"></a>给某个文本输入框添加多种校验规则</h2><p>目前我们的表单校验实现虽然已经改进了很多，但是还是留有一点小遗憾:一个文本输入框只能对应一种校验规则，比如，用户名输入框只能校验输入是否为空。如果我们既想校验它是否为空，又想校验它输入文本的长度不小于 10 呢? 我们现在只需要对 Validator 类的add方法稍加改造就行了：</p><pre><code>Validator.prototype.add = function( dom, rules ){    var self = this;    for ( var i = 0, rule; rule = rules[ i++ ]; ){         (function( rule ){            var strategyAry = rule.strategy.split( &#39;:&#39; );             var errorMsg = rule.errorMsg;            self.cache.push(function(){                var strategy = strategyAry.shift();                strategyAry.unshift( dom.value );                strategyAry.push( errorMsg );                return strategies[ strategy ].apply( dom, strategyAry );            });         })( rule )    } };// 调用的时候也需要稍加改变var validataFunc = function(){    var validator = new Validator();    validator.add( registerForm.userName, [{         strategy: &#39;isNonEmpty&#39;,        errorMsg: &#39;用户名不能为空&#39;    }, {        strategy: &#39;minLength:6&#39;,        errorMsg: &#39;用户名长度不能小于 10 位&#39;    }]);    validator.add( registerForm.password, [{        strategy: &#39;minLength:6&#39;,        errorMsg: &#39;密码长度不能小于 6 位&#39; 9    }]);    validator.add( registerForm.phoneNumber, [{         strategy: &#39;isMobile&#39;,        errorMsg: &#39;手机号码格式不正确&#39;    }]);    var errorMsg = validator.start();    return errorMsg;}</code></pre><h2 id="策略模式的优缺点"><a href="#策略模式的优缺点" class="headerlink" title="策略模式的优缺点"></a>策略模式的优缺点</h2><p>策略模式是一种常用且有效的设计模式，从上边表单验证的例子中，我们可以总结出策略模式的一些优点。</p><ul><li>策略模式利用组合、委托和多态等技术和思想，可以有效地避免多重条件选择语句。</li><li>策略模式提供了对开放—封闭原则的完美支持，将算法封装在独立的 strategy 中，使得它们易于切换，易于理解，易于扩展。</li><li>策略模式中的算法也可以复用在系统的其他地方，从而避免许多重复的复制粘贴工作。</li><li>在策略模式中利用组合和委托来让 Context 拥有执行算法的能力，这也是继承的一种更轻便的替代方案。<br>当然，策略模式也有一些缺点，但这些缺点并不严重。<br>首先，使用策略模式会在程序中增加许多策略类或者策略对象，但实际上这比把它们负责的逻辑堆砌在 Context 中要好。<br>其次，要使用策略模式，必须了解所有的 strategy，必须了解各个 strategy 之间的不同点，这样才能选择一个合适的 strategy。比如，我们要选择一种合适的旅游出行路线，必须先了解选择飞机、火车、自行车等方案的细节。此时 strategy 要向客户暴露它的所有实现，这是违反最少知识原则的。</li></ul><p>虽然大部分都是照搬照抄的，但是确实从中学到了很多。我一直认为学会是一码事，会用又是一码事，所以还要在今后不断尝试，不断融会贯通。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 设计模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>记一次vue-awesome-swiper踩坑</title>
+      <link href="/2019/11/07/ji-yi-ci-vue-awesome-swiper-cai-keng/"/>
+      <url>/2019/11/07/ji-yi-ci-vue-awesome-swiper-cai-keng/</url>
+      
+        <content type="html"><![CDATA[<p>在做项目的时候，有个需求，就是在选择酒店的时候，如果酒店超过四张，就要用轮播图的结构来实现，场景如下：<br><img src="swiper1.png" alt="使用swiper前"><br>针对这个需求，首先想到的就是<strong>vue-awesome-swiper</strong>插件，配置也可以参照swiper官网的参数配置。实现的过程中，首先碰到第一个问题，按照组件的方式，左右切换按钮不符合期望的展示要求，因为它是相对swiper-container定位的，超出这个范围就会 <code>overflow:hidde</code>。于是在原来代码结构上稍加改造：在swiper组件外部添加一个相对定位的盒子，然后将两个按钮取出来放到这个盒子层级下，相对于这个盒子取定位，这样就可以解决切换按钮的问题，代码如下：</p><pre><code>&lt;div class=&quot;modal_item_wrapper&quot;&gt;    &lt;swiper :options=&quot;swiperOption&quot; ref=&quot;mySwiper&quot;&gt;        &lt;swiper-slide class=&quot;modal_item&quot; v-for=&quot;(item, idx) in hotelList&quot; :key=&quot;idx&quot;&gt;        &lt;/swiper-slide&gt;    &lt;/swiper&gt;    &lt;div class=&quot;swiper-button-prev swiper-button-black&quot; slot=&quot;button-prev&quot; v-if=&quot;hotelList.length&gt;4&quot;&gt;&lt;/div&gt;    &lt;div class=&quot;swiper-button-next swiper-button-black&quot; slot=&quot;button-next&quot; v-if=&quot;hotelList.length&gt;4&quot;&gt;&lt;/div&gt;&lt;/div&gt;</code></pre><p>然后这就是最终效果：<br><img src="swiper2.png" alt><br>效果展示是实现了，好了现在又来个需求，当酒店不超过四家的时候，切换按钮隐藏，这太简单了吧，直接开搂<code>v-if=&quot;hotelList.length&gt;4&quot;</code>，测试一波，完美。<br>但是，在第二天组件拆分的时候，代码这个复制过来，不差一丝一毫，再次测试，发现切换按钮不管用了，打开控制台，也没了切换的事件，然后各种找原因也没有解决，接着就是各种google，最终在一篇博客中看到一句话：“使用swiper尽量最好不用v-if，而是用v-show”，然后我就将按钮判断条件替换成了<code>v-show</code>,遇到的问题也得到了完美解决。但是没有原因，于是在github上找，归根到底还是<code>v-if</code>和<code>v-show</code>的区别，原话是这样的：“v-show和v-if的区别是，v-if在变量为true的时候才会渲染DOM，这个时候轮播的数据已经有了，可以渲染成功。v-show不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 进行切换。”</p><p>所以呢，通过这篇low到爆的文章，我想说：“swiper组件中不要使用v-if，不要使用v-if，不要使用v-if！”。否则会碰见各种奇葩的诡异事情。<br><img src="th.jpg" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 成长 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 成长 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>1px引发的思考</title>
+      <link href="/2019/08/31/1px-think/"/>
+      <url>/2019/08/31/1px-think/</url>
+      
+        <content type="html"><![CDATA[<p>今天下午被财务部叫去喝了一杯“卡布奇诺”，原因真的是难以启齿啊，看了标题你们大概已经猜到了，没错，就是1px的问题，再具体点说，我脑子抽了，将字体font-size设置为1px，what？<br><img src="4.jpg" alt></p><p>当时看到这种情况，我是一脸懵逼的，这怎么可能呢？我和后台自己测试都没有问题啊？这么神奇吗？因为我们用chrome，财务部用的是Firefox，我当时第一想法就是兼容性？大家看图，第一张是火狐的，第二张是谷歌的。<br><img src="1.png" alt><br><img src="2.png" alt><br>数据也确实有，但是怎么会是点和线呢？脑壳疼。就算是兼容性也不会table存在兼容性问题啊，怎么可能显示小数点和横线呢，真的没听说过啊？回到工位上，打开代码，直接看到了问题所在，css里我竟然将font-size设置了1px，我靠，这么低级的错误，难以启齿啊！所以图中显示的不是小数点和线，而是font-size为1px的字符，然后分别在谷歌和火狐的控制台看到如下：<br><img src="4.png" alt> <center>Chrome</center><br><img src="3.png" alt> <center>Firefox</center></p><p>所以我猜，应该在低于12px或者是某一限值的时候，谷歌会默认设置为12px，而火狐很耿直的你是啥就是啥，没有一点变通，真的是1px给我了很大的教训。<br>我之所以拿这种没有技术含量又难以启齿的问题出来说一下，就是想要强调细心，尤其是干代码这一行的，往往一个数点，一个数字，一个字母的错误就会引起一连串的反应，造成很大的损失，更别说我负责的是公司的财务系统，真的出错了，这个职责是很大的。</p><p>基于这一点，也当是给自己一个教训，给各位一个忠告，做事一定要仔细认真。趁着这篇不算技术的博文，我也提几点这两个月的体会和心得吧。</p><ul><li>第一点：项目开始之前，一定要将需求分析好，将大致构架、流程想好，为开发做好准备，千万不要吝啬这点时间直接去开发；</li><li>第二点：发现bug即使处理，或者定个time处理，但这个时间不宜过长，以为一旦bug不及时修复，可能当时没啥问题，但开发到后期往往会出现连带反应和滚雪球效应；</li><li>第三点：做好文档整理，这个文档整理不仅局限于开发前的文档准备，还有开发过程中的记录和开发后的总结，真的很重要，而且可以让后续接手人员更快上手。</li></ul><p>以上就是这次的思考与想法。有的人可能会问，测试是白吃吗？这都测不出来。这点要说一下，我现在可以算半个测试了（自豪）。因为公司项目挺多，测试只有两个小改改，所以财务项目只有我和一个php后台，每次开发完都是自己测试，我俩只用Chome，因此可能测试的不是那么完全，有时只能根据线上反馈的bug进行修复。最后上一下重构的table页面吧。<br><img src="5.png" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Day One</title>
+      <link href="/2019/08/29/first-blog/"/>
+      <url>/2019/08/29/first-blog/</url>
+      
+        <content type="html"><![CDATA[<div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=470099652&auto=1&height=66"></iframe></div><p>这两天工作有点闲，于是在今天用了一下午终于基于Hexo搭建好了个人博客，完成了日思夜想的一件事。目前是部署在github上，过了这段时间部署到服务器上。作为第一篇博客，总是要说点什么吧。<br><img src="1.jpg" alt></p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr><p>拥有一个自己博客，是在我接触到前端不久后就有的一个梦想，之前想自己撸一个前端+后台的，但苦于技术限制了我的小目标。好在现在出现了各种框架，于是，在一个阳光灿烂的午后，我一方面观察四周，一方面搭建博客，终于完成了曾经的小目标，而且在这过程中，我找回了多年前上课看手机的那种感觉，那是我逝去的青春！</p><h1 id="为什么想写博客？"><a href="#为什么想写博客？" class="headerlink" title="为什么想写博客？"></a>为什么想写博客？</h1><hr><p><img src="3.jpg" alt><br>为什么写博客？我觉得大部分人应该都知道标准答案。做开发的，都想拥有一个个人博客吧，可能没什么人看，但还是想记录一下自己的进步过程。我还记得那时作为一个初入职场的小菜鸟（虽然现在还是小菜鸟）有许多问题、资料都要在网上查找，看着网上那么多答案，还有大牛酷炫的个人网站，心里就萌生了想法：</p><ul><li>我能在别人博客上查到我想要的东西，为什么别人不能在我的博客上找到需要的呢？</li><li>这样是否对记录我自己的问题（高中时的错题本）甚至对今后面试有好处？</li><li>酷炫的博客页面又是一个展（zhuang）示（bi）自己的机会。</li></ul><p>我相信大部分人无非也是这几个原因吧，具体是哪个原因我觉得大家首先要想清楚。因为如果是前面两个原因，也许后面会因为博客内容帮助到自己的同时也帮助到他人，让自己更有坚持下去的动力。如果是最后一个，大概率的会因为自己不想折腾而慢慢放弃。<br>我也不知道自己能不能坚持下去！</p><h1 id="你适合写博客嘛？"><a href="#你适合写博客嘛？" class="headerlink" title="你适合写博客嘛？"></a>你适合写博客嘛？</h1><hr><p>目的搞清楚之后再来看看你适合写博客嘛？不过我觉得这个问题改为<strong>你会坚持写博客嘛？</strong>可能更直接一些。因为我认为写博客最大的阻碍就是【坚持】二字了。我之前也在博客园、掘金上边写了几篇文章，但是都没有坚持下去，一方面是在于我个人一直现共有个人博客，所以没有坚持的动力，现在嘛，我也不知道以后又没有动力。<br>回到主要问题，再讨论这个问题之前首先看两个问题：</p><ul><li>做什么事情自己坚持的最久？</li><li>什么原因导致没有坚持下去？</li></ul><p>大学期间好几次下决心跑步减肥，但是前几次都失败了，唯一坚持下来并且成功减掉30斤是在大三下学期，坚持了4-5个月，每天早上6点起床跑步。现在想想为什么当时能坚持下来呢？<br>一个是【热爱】，当初我那次是真的喜欢上了慢跑的感觉，尤其是3公里之后，很舒服。<br>二是有【产出】，大学那阵减肥效果是非常明显的，所以才有了坚持下去的动力。<br>三是有【回报】，当时我有个想法，跑步是不是能吃更多好吃的，而且不长肉？答案是肯定的。<br>所以回归到写博客这件事情上来，我觉得只要你对这件事是喜欢的，有激情，同时写出的东西对你有正向激励就会让自己有坚持下去的理由。</p><h1 id="会遇到哪些问题？"><a href="#会遇到哪些问题？" class="headerlink" title="会遇到哪些问题？"></a>会遇到哪些问题？</h1><hr><p>问题肯定是会有的，比如文章质量、素材等等，尤其是我这种词穷、嘴笨的人。我觉得这些完全没必要担心，既然写出来了，就不要怕出现这样那样的问题，能解决他人问题更好，不能解决就当记录自己的成长路程。</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><hr><p>工作了接近两个月，现在一个人负责公司的财务系统，这两天看刚进公司写的代码，感觉low爆了，越是趁着有时间全部重构了一遍，这其实就是一种成长。</p><p>最后还是祝自己还有你们每个人无论工作还是生活顺顺利利！<br><img src="2.jpeg" alt></p><blockquote><p>当狂风在耳边呼啸时，你只当它是微风拂面；<br>当暴雨在头顶倾泻时，你只当它是屋檐滴水；<br>当闪电在眼前肆虐时，你只当它是一丝光亮；<br>人决不能在逆境面前低下头</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
