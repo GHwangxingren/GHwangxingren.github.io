@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://GHwangxingren.github.io.git/"/>
-  <updated>2020-06-15T02:59:19.608Z</updated>
+  <updated>2020-07-28T09:29:54.539Z</updated>
   <id>https://GHwangxingren.github.io.git/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Event-loop 事件循环机制</title>
+    <link href="https://GHwangxingren.github.io.git/2020/07/28/event-loop/"/>
+    <id>https://GHwangxingren.github.io.git/2020/07/28/event-loop/</id>
+    <published>2020-07-28T00:45:18.000Z</published>
+    <updated>2020-07-28T09:29:54.539Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="必备知识" scheme="https://GHwangxingren.github.io.git/categories/%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="必备知识" scheme="https://GHwangxingren.github.io.git/tags/%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Nuxt--默认模板app.html</title>
