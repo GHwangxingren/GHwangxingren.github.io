@@ -542,7 +542,7 @@ console.log(&#39;script end&#39;)
 <li>继续执行碰到定时器，产生一个新的宏任务；</li>
 <li>执行<code>Promsie</code>，输出<code>Promise</code>，遇到<code>then</code>关键字，产生第一个微任务；</li>
 <li>继续执行代码，输出<code>script end</code>；</li>
-<li>当前宏任务执行完毕，跳回到<code>async1</code>方法内，执行await,此时<code>await Promise.resolve()</code>就类似于<code>Promise.resolve(undefined).then(res =&gt; console.log(async1 end)</code>,此时执行到这把then的回调推入微任务队列，产生第二个微任务。（实际上老版本的引擎会产生被包裹两层微任务，中可以这样简单理解，具体可以戳<a href="https://juejin.im/post/5beea5f5f265da61590b40cd#heading-7/" target="_blank" rel="noopener">「译」更快的 async 函数和 promises</a>，这篇文章也可以解释为什么新的V8引擎输出结果会不同）。</li>
+<li>当前宏任务执行完毕，跳回到<code>async1</code>方法内，执行await,此时<code>await Promise.resolve()</code>就类似于<code>Promise.resolve(undefined).then(res =&gt; console.log(async1 end)</code>,此时执行到这把then的回调推入微任务队列，产生第二个微任务。（实际上老版本的引擎中这个任务会被包裹两层微任务，大家可以这样简单理解，具体可以戳<a href="https://juejin.im/post/5beea5f5f265da61590b40cd#heading-7/" target="_blank" rel="noopener">「译」更快的 async 函数和 promises</a>，这篇文章也可以解释为什么新的V8引擎输出结果会不同）。</li>
 <li>接着开始清空微任务列表，首先输出第一个微任务<br><code>promise1</code>，此时会创建第三个微任务<code>promise2</code>；</li>
 <li>到了6中产生的第二个微任务，执行后发现里边包了一个微任务，推入到微任务列表；</li>
 <li>执行7中的第三个微任务<code>promise2</code>，最后来到8中产生的微任务，此时<code>await</code>终于结束，输出<code>async1 end</code>;</li>
