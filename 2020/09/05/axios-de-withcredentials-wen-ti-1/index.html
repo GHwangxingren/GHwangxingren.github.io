@@ -7,9 +7,7 @@
     <meta name="keywords" content="axios的withCredentials问题, 兴仁 前端 HTML CSS JS VUE">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
-    <meta name="description" content="今天h5上线，但是正式环境测试的时候发现获取不到cookie。因为是vue前后端分离项目，vue不会自动帮我们保存后端传来的cookie，。咨询大佬之后，只在请求接口的时候加了一行代码：
-/**
- * @description 创建axio">
+    <meta name="description" content="axios的withCredentials问题 | 俗了清秋">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -407,24 +405,11 @@
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        
-                        <a href="/tags/成长/" target="_blank">
-                            <span class="chip bg-color">成长</span>
-                        </a>
-                        
+                        <span class="chip bg-color">无标签</span>
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                        <a href="/categories/成长/" class="post-category" target="_blank">
-                            成长
-                        </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -446,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    425
+                    0
                 </div>
                 
 
@@ -469,30 +454,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天h5上线，但是正式环境测试的时候发现获取不到cookie。因为是vue前后端分离项目，vue不会自动帮我们保存后端传来的cookie，。咨询大佬之后，只在请求接口的时候加了一行代码：</p>
-<pre><code>/**
- * @description 创建axios实例
- * @param baseURL 基础url，会在请求url中自动添加前置链接
- * @param timeout 请求超时时间
- */
-axios.defaults.withCredentials = true; // 看这里
-
-const service = axios.create({
-  timeout: 1000 * 8
-});
-</code></pre><p><strong>withCredentials</strong>的文档的描述是 “表示跨域请求时是否需要使用凭证信息（cookie、HTTP认证及客户端SSL证明等）”，也可以简单的理解为，当前请求为跨域类型时是否在请求中协带cookie。开启withCredentials后，服务器才能拿到你的cookie，当然后端服务器也要设置允许你获取你开启了才有用。</p>
-<p>这样，全局进行配置后，每次请求都会自动携带上cookie了。</p>
-<p>当然了，如果没有效果的话，可能是后端没有进行配置。对后端的要求主要有：</p>
-<ol>
-<li>header设置<strong>Access-Control-Allow-Origin 设置不可以是通配符</strong>，而是要设置成你的源地址（本地的话不可为localhost形式，使用ip格式）；</li>
-<li>header要设置 <strong>“Access-Control-Allow-Credentials: true”</strong>。<br><img src="1.png" alt="后端相关设置"></li>
-</ol>
-<p>最后再说三遍，跨域访问需要发送cookie时一定要加<strong>axios.defaults.withCredentials = true</strong>。（当然也不一定只有这一种方法）</p>
-<h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>后端大佬让我在script加一段脚本，但是当时上个方法已经解决了我的问题，所以这个方法也没有进行验证。</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-  // document.domain = &quot;xxx.com&quot;;
-  document.cookie = &quot;path=/;domain=.xxx.com&quot;;
-&lt;/script&gt;</code></pre>
+                
             </div>
             <hr />
 
@@ -652,7 +614,7 @@ const service = axios.create({
                   property="dct:title" rel="dct:type">
                     《axios的withCredentials问题》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/05/axios-de-withcredentials-wen-ti/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/05/axios-de-withcredentials-wen-ti-1/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王兴仁
             </a> 采用
@@ -693,7 +655,7 @@ const service = axios.create({
         repo: 'GHwangxingren.github.io',
         owner: 'GHwangxingren',
         admin: "GHwangxingren",
-        id: '2020/09/05/axios-de-withcredentials-wen-ti/',
+        id: '2020/09/05/axios-de-withcredentials-wen-ti-1/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -714,9 +676,10 @@ const service = axios.create({
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/09/05/axios-de-withcredentials-wen-ti-1/">
                     <div class="card-image">
@@ -734,14 +697,15 @@ const service = axios.create({
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-05
+                            </span>
                         <span class="publish-author">
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -752,31 +716,33 @@ const service = axios.create({
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/28/event-loop/">
+                <a href="/2020/09/05/axios-de-withcredentials-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Event-loop 事件循环机制">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="axios的withCredentials问题">
                         
-                        <span class="card-title">Event-loop 事件循环机制</span>
+                        <span class="card-title">axios的withCredentials问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            事件循环机制是js中特别重要的一环知识，这块值得大家深究，以应对代码执行顺序的问题。
+                            今天h5上线，但是正式环境测试的时候发现获取不到cookie。因为是vue前后端分离项目，vue不会自动帮我们保存后端传来的cookie，。咨询大佬之后，只在请求接口的时候加了一行代码：
+/**
+ * @description 创建axio
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-28
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/必备知识/" class="post-category" target="_blank">
-                                    必备知识
+                            <a href="/categories/成长/" class="post-category" target="_blank">
+                                    成长
                                 </a>
                             
                             
@@ -786,8 +752,8 @@ const service = axios.create({
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/必备知识/" target="_blank">
-                        <span class="chip bg-color">必备知识</span>
+                    <a href="/tags/成长/" target="_blank">
+                        <span class="chip bg-color">成长</span>
                     </a>
                     
                 </div>
