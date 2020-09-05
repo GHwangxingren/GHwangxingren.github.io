@@ -4,14 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Day One, 兴仁 前端 HTML CSS JS VUE">
+    <meta name="keywords" content="axios的withCredentials问题, 兴仁 前端 HTML CSS JS VUE">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
-    <meta name="description" content="
-
-这两天工作有点闲，于是在今天用了一下午终于基于Hexo搭建好了个人博客，完成了日思夜想的一件事。目前是部署在github上，过了这段时间部署到服务器上。作为第一篇博客，总是要说点什么吧。
-前言
-拥有一个自己博客，是在我接触到前端不久后就">
+    <meta name="description" content="今天h5上线，但是正式环境测试的时候发现获取不到cookie。因为是vue前后端分离项目，vue不会自动帮我们保存后端传来的cookie，。咨询大佬之后，只在请求接口的时候加了一行代码：
+/**
+ * @description 创建axio">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Day One | 俗了清秋</title>
+    <title>axios的withCredentials问题 | 俗了清秋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -293,13 +291,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/30.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Day One
+                        axios的withCredentials问题
                     </div>
                 </div>
             </div>
@@ -410,8 +408,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/随笔/" target="_blank">
-                            <span class="chip bg-color">随笔</span>
+                        <a href="/tags/成长/" target="_blank">
+                            <span class="chip bg-color">成长</span>
                         </a>
                         
                     </div>
@@ -422,8 +420,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/随笔/" class="post-category" target="_blank">
-                            随笔
+                        <a href="/categories/成长/" class="post-category" target="_blank">
+                            成长
                         </a>
                         
                     </div>
@@ -434,7 +432,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-29
+                    2020-09-05
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -448,14 +446,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    425
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
                 
@@ -471,35 +469,30 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=470099652&auto=1&height=66"></iframe></div>
+                <p>今天h5上线，但是正式环境测试的时候发现获取不到cookie。因为是vue前后端分离项目，vue不会自动帮我们保存后端传来的cookie，。咨询大佬之后，只在请求接口的时候加了一行代码：</p>
+<pre><code>/**
+ * @description 创建axios实例
+ * @param baseURL 基础url，会在请求url中自动添加前置链接
+ * @param timeout 请求超时时间
+ */
+axios.defaults.withCredentials = true; // 看这里
 
-<p>这两天工作有点闲，于是在今天用了一下午终于基于Hexo搭建好了个人博客，完成了日思夜想的一件事。目前是部署在github上，过了这段时间部署到服务器上。作为第一篇博客，总是要说点什么吧。<br><img src="1.jpg" alt></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
-<p>拥有一个自己博客，是在我接触到前端不久后就有的一个梦想，之前想自己撸一个前端+后台的，但苦于技术限制了我的小目标。好在现在出现了各种框架，于是，在一个阳光灿烂的午后，我一方面观察四周，一方面搭建博客，终于完成了曾经的小目标，而且在这过程中，我找回了多年前上课看手机的那种感觉，那是我逝去的青春！</p>
-<h1 id="为什么想写博客？"><a href="#为什么想写博客？" class="headerlink" title="为什么想写博客？"></a>为什么想写博客？</h1><hr>
-<p><img src="3.jpg" alt><br>为什么写博客？我觉得大部分人应该都知道标准答案。做开发的，都想拥有一个个人博客吧，可能没什么人看，但还是想记录一下自己的进步过程。我还记得那时作为一个初入职场的小菜鸟（虽然现在还是小菜鸟）有许多问题、资料都要在网上查找，看着网上那么多答案，还有大牛酷炫的个人网站，心里就萌生了想法：</p>
-<ul>
-<li>我能在别人博客上查到我想要的东西，为什么别人不能在我的博客上找到需要的呢？</li>
-<li>这样是否对记录我自己的问题（高中时的错题本）甚至对今后面试有好处？</li>
-<li>酷炫的博客页面又是一个展（zhuang）示（bi）自己的机会。</li>
-</ul>
-<p>我相信大部分人无非也是这几个原因吧，具体是哪个原因我觉得大家首先要想清楚。因为如果是前面两个原因，也许后面会因为博客内容帮助到自己的同时也帮助到他人，让自己更有坚持下去的动力。如果是最后一个，大概率的会因为自己不想折腾而慢慢放弃。<br>我也不知道自己能不能坚持下去！</p>
-<h1 id="你适合写博客嘛？"><a href="#你适合写博客嘛？" class="headerlink" title="你适合写博客嘛？"></a>你适合写博客嘛？</h1><hr>
-<p>目的搞清楚之后再来看看你适合写博客嘛？不过我觉得这个问题改为<strong>你会坚持写博客嘛？</strong>可能更直接一些。因为我认为写博客最大的阻碍就是【坚持】二字了。我之前也在博客园、掘金上边写了几篇文章，但是都没有坚持下去，一方面是在于我个人一直现共有个人博客，所以没有坚持的动力，现在嘛，我也不知道以后又没有动力。<br>回到主要问题，再讨论这个问题之前首先看两个问题：</p>
-<ul>
-<li>做什么事情自己坚持的最久？</li>
-<li>什么原因导致没有坚持下去？</li>
-</ul>
-<p>大学期间好几次下决心跑步减肥，但是前几次都失败了，唯一坚持下来并且成功减掉30斤是在大三下学期，坚持了4-5个月，每天早上6点起床跑步。现在想想为什么当时能坚持下来呢？<br>一个是【热爱】，当初我那次是真的喜欢上了慢跑的感觉，尤其是3公里之后，很舒服。<br>二是有【产出】，大学那阵减肥效果是非常明显的，所以才有了坚持下去的动力。<br>三是有【回报】，当时我有个想法，跑步是不是能吃更多好吃的，而且不长肉？答案是肯定的。<br>所以回归到写博客这件事情上来，我觉得只要你对这件事是喜欢的，有激情，同时写出的东西对你有正向激励就会让自己有坚持下去的理由。</p>
-<h1 id="会遇到哪些问题？"><a href="#会遇到哪些问题？" class="headerlink" title="会遇到哪些问题？"></a>会遇到哪些问题？</h1><hr>
-<p>问题肯定是会有的，比如文章质量、素材等等，尤其是我这种词穷、嘴笨的人。我觉得这些完全没必要担心，既然写出来了，就不要怕出现这样那样的问题，能解决他人问题更好，不能解决就当记录自己的成长路程。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><hr>
-<p>工作了接近两个月，现在一个人负责公司的财务系统，这两天看刚进公司写的代码，感觉low爆了，越是趁着有时间全部重构了一遍，这其实就是一种成长。</p>
-<p>最后还是祝自己还有你们每个人无论工作还是生活顺顺利利！<br><img src="2.jpeg" alt></p>
-<blockquote>
-<p>当狂风在耳边呼啸时，你只当它是微风拂面；<br>当暴雨在头顶倾泻时，你只当它是屋檐滴水；<br>当闪电在眼前肆虐时，你只当它是一丝光亮；<br>人决不能在逆境面前低下头</p>
-</blockquote>
-
+const service = axios.create({
+  timeout: 1000 * 8
+});
+</code></pre><p><strong>withCredentials</strong>的文档的描述是 “表示跨域请求时是否需要使用凭证信息(cookie、HTTP认证及客户端SSL证明等)”，也可以简单的理解为，当前请求为跨域类型时是否在请求中协带cookie。开启withCredentials后，服务器才能拿到你的cookie，当然后端服务器也要设置允许你获取你开启了才有用。</p>
+<p>这样，全局进行配置后，每次请求都会自动携带上cookie了。</p>
+<p>当然了，如果没有效果的话，可能是后端没有进行配置。对后端的要求主要有：</p>
+<ol>
+<li>header设置<strong>Access-Control-Allow-Origin 设置不可以是通配符</strong>，而是要设置成你的源地址（本地的话不可为localhost形式，使用ip格式）；</li>
+<li>header要设置 <strong>“Access-Control-Allow-Credentials: true”</strong>。<br><img src="1.png" alt="后端相关设置"></li>
+</ol>
+<p>最后最说三遍，跨域访问需要发送cookie时一定要加axios.defaults.withCredentials = true。（当然也不一定只有这一种方法）</p>
+<h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>后端大佬让我在script加一段脚本，但是当时上个方法已经解决了我的问题，所以这个方法也没有进行验证。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+  // document.domain = &quot;xxx.com&quot;;
+  document.cookie = &quot;path=/;domain=.xxx.com&quot;;
+&lt;/script&gt;</code></pre>
             </div>
             <hr />
 
@@ -657,9 +650,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Day One》
+                    《axios的withCredentials问题》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/29/first-blog/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/05/axios-de-withcredentials-wen-ti/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王兴仁
             </a> 采用
@@ -700,7 +693,7 @@
         repo: 'GHwangxingren.github.io',
         owner: 'GHwangxingren',
         admin: "GHwangxingren",
-        id: '2019/08/29/first-blog/',
+        id: '2020/09/05/axios-de-withcredentials-wen-ti/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -721,84 +714,38 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/31/1px-think/">
+                <a href="/2020/09/05/axios-de-withcredentials-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="1px引发的思考">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="axios的withCredentials问题">
                         
-                        <span class="card-title">1px引发的思考</span>
+                        <span class="card-title">axios的withCredentials问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            你们见过将font-szie设置为1的骚操作吗？没有关系，今天让你们见识一下，没错，我就干了这么蠢的一件事，what？不信？听我娓娓道来！
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-31
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/随笔/" target="_blank">
-                        <span class="chip bg-color">随笔</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/08/29/first-blog/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/30.jpg" class="responsive-img" alt="Day One">
-                        
-                        <span class="card-title">Day One</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            用了一下午终于基于Hexo搭建好了个人博客，目前是部署在github上，过了这段时间部署到服务器上，作为第一篇博客，总是要说点什么吧。
+                            今天h5上线，但是正式环境测试的时候发现获取不到cookie。因为是vue前后端分离项目，vue不会自动帮我们保存后端传来的cookie，。咨询大佬之后，只在请求接口的时候加了一行代码：
+/**
+ * @description 创建axio
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-29
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
+                            <a href="/categories/成长/" class="post-category" target="_blank">
+                                    成长
                                 </a>
                             
                             
@@ -809,8 +756,57 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/随笔/" target="_blank">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/成长/" target="_blank">
+                        <span class="chip bg-color">成长</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/07/28/event-loop/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Event-loop 事件循环机制">
+                        
+                        <span class="card-title">Event-loop 事件循环机制</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            事件循环机制是js中特别重要的一环知识，这块值得大家深究，以应对代码执行顺序的问题。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/必备知识/" class="post-category" target="_blank">
+                                    必备知识
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/必备知识/" target="_blank">
+                        <span class="chip bg-color">必备知识</span>
                     </a>
                     
                 </div>
@@ -957,6 +953,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">

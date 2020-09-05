@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>axios的withCredentials问题</title>
+      <link href="/2020/09/05/axios-de-withcredentials-wen-ti/"/>
+      <url>/2020/09/05/axios-de-withcredentials-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<p>今天h5上线，但是正式环境测试的时候发现获取不到cookie。因为是vue前后端分离项目，vue不会自动帮我们保存后端传来的cookie，。咨询大佬之后，只在请求接口的时候加了一行代码：</p><pre><code>/** * @description 创建axios实例 * @param baseURL 基础url，会在请求url中自动添加前置链接 * @param timeout 请求超时时间 */axios.defaults.withCredentials = true; // 看这里const service = axios.create({  timeout: 1000 * 8});</code></pre><p><strong>withCredentials</strong>的文档的描述是 “表示跨域请求时是否需要使用凭证信息(cookie、HTTP认证及客户端SSL证明等)”，也可以简单的理解为，当前请求为跨域类型时是否在请求中协带cookie。开启withCredentials后，服务器才能拿到你的cookie，当然后端服务器也要设置允许你获取你开启了才有用。</p><p>这样，全局进行配置后，每次请求都会自动携带上cookie了。</p><p>当然了，如果没有效果的话，可能是后端没有进行配置。对后端的要求主要有：</p><ol><li>header设置<strong>Access-Control-Allow-Origin 设置不可以是通配符</strong>，而是要设置成你的源地址（本地的话不可为localhost形式，使用ip格式）；</li><li>header要设置 <strong>“Access-Control-Allow-Credentials: true”</strong>。<br><img src="1.png" alt="后端相关设置"></li></ol><p>最后最说三遍，跨域访问需要发送cookie时一定要加axios.defaults.withCredentials = true。（当然也不一定只有这一种方法）</p><h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>后端大佬让我在script加一段脚本，但是当时上个方法已经解决了我的问题，所以这个方法也没有进行验证。</p><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;  // document.domain = &quot;xxx.com&quot;;  document.cookie = &quot;path=/;domain=.xxx.com&quot;;&lt;/script&gt;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 成长 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 成长 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Event-loop 事件循环机制</title>
       <link href="/2020/07/28/event-loop/"/>
       <url>/2020/07/28/event-loop/</url>

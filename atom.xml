@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://GHwangxingren.github.io.git/"/>
-  <updated>2020-08-01T09:47:02.371Z</updated>
+  <updated>2020-09-05T06:42:18.572Z</updated>
   <id>https://GHwangxingren.github.io.git/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>axios的withCredentials问题</title>
+    <link href="https://GHwangxingren.github.io.git/2020/09/05/axios-de-withcredentials-wen-ti/"/>
+    <id>https://GHwangxingren.github.io.git/2020/09/05/axios-de-withcredentials-wen-ti/</id>
+    <published>2020-09-05T06:08:25.000Z</published>
+    <updated>2020-09-05T06:42:18.572Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天h5上线，但是正式环境测试的时候发现获取不到cookie。因为是vue前后端分离项目，vue不会自动帮我们保存后端传来的cookie，。咨询大佬之后，只在请求接口的时候加了一行代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * @description
+        
+      
+    
+    </summary>
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/categories/%E6%88%90%E9%95%BF/"/>
+    
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/tags/%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
   
   <entry>
     <title>Event-loop 事件循环机制</title>
