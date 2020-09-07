@@ -5,19 +5,6 @@
     
     <entry>
       <title>axios的withCredentials问题</title>
-      <link href="/2020/09/05/axios-de-withcredentials-wen-ti-1/"/>
-      <url>/2020/09/05/axios-de-withcredentials-wen-ti-1/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>axios的withCredentials问题</title>
       <link href="/2020/09/05/axios-de-withcredentials-wen-ti/"/>
       <url>/2020/09/05/axios-de-withcredentials-wen-ti/</url>
       
@@ -159,31 +146,6 @@
         <tags>
             
             <tag> 成长 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>1px引发的思考</title>
-      <link href="/2019/08/31/1px-think/"/>
-      <url>/2019/08/31/1px-think/</url>
-      
-        <content type="html"><![CDATA[<p>今天下午被财务部叫去喝了一杯“卡布奇诺”，原因真的是难以启齿啊，看了标题你们大概已经猜到了，没错，就是1px的问题，再具体点说，我脑子抽了，将字体font-size设置为1px，what？<br><img src="4.jpg" alt></p><p>当时看到这种情况，我是一脸懵逼的，这怎么可能呢？我和后台自己测试都没有问题啊？这么神奇吗？因为我们用chrome，财务部用的是Firefox，我当时第一想法就是兼容性？大家看图，第一张是火狐的，第二张是谷歌的。<br><img src="1.png" alt><br><img src="2.png" alt><br>数据也确实有，但是怎么会是点和线呢？脑壳疼。就算是兼容性也不会table存在兼容性问题啊，怎么可能显示小数点和横线呢，真的没听说过啊？回到工位上，打开代码，直接看到了问题所在，css里我竟然将font-size设置了1px，我靠，这么低级的错误，难以启齿啊！所以图中显示的不是小数点和线，而是font-size为1px的字符，然后分别在谷歌和火狐的控制台看到如下：<br><img src="4.png" alt> <center>Chrome</center><br><img src="3.png" alt> <center>Firefox</center></p><p>所以我猜，应该在低于12px或者是某一限值的时候，谷歌会默认设置为12px，而火狐很耿直的你是啥就是啥，没有一点变通，真的是1px给我了很大的教训。<br>我之所以拿这种没有技术含量又难以启齿的问题出来说一下，就是想要强调细心，尤其是干代码这一行的，往往一个数点，一个数字，一个字母的错误就会引起一连串的反应，造成很大的损失，更别说我负责的是公司的财务系统，真的出错了，这个职责是很大的。</p><p>基于这一点，也当是给自己一个教训，给各位一个忠告，做事一定要仔细认真。趁着这篇不算技术的博文，我也提几点这两个月的体会和心得吧。</p><ul><li>第一点：项目开始之前，一定要将需求分析好，将大致构架、流程想好，为开发做好准备，千万不要吝啬这点时间直接去开发；</li><li>第二点：发现bug即使处理，或者定个time处理，但这个时间不宜过长，以为一旦bug不及时修复，可能当时没啥问题，但开发到后期往往会出现连带反应和滚雪球效应；</li><li>第三点：做好文档整理，这个文档整理不仅局限于开发前的文档准备，还有开发过程中的记录和开发后的总结，真的很重要，而且可以让后续接手人员更快上手。</li></ul><p>以上就是这次的思考与想法。有的人可能会问，测试是白吃吗？这都测不出来。这点要说一下，我现在可以算半个测试了（自豪）。因为公司项目挺多，测试只有两个小改改，所以财务项目只有我和一个php后台，每次开发完都是自己测试，我俩只用Chome，因此可能测试的不是那么完全，有时只能根据线上反馈的bug进行修复。最后上一下重构的table页面吧。<br><img src="5.png" alt></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 随笔 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 随笔 </tag>
             
         </tags>
       
