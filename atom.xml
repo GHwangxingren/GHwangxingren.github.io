@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://GHwangxingren.github.io.git/"/>
-  <updated>2020-09-05T07:13:51.961Z</updated>
+  <updated>2020-12-22T08:21:07.397Z</updated>
   <id>https://GHwangxingren.github.io.git/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>a标签实现图片下载</title>
+    <link href="https://GHwangxingren.github.io.git/2020/12/22/a-biao-qian-shi-xian-tu-pian-xia-zai/"/>
+    <id>https://GHwangxingren.github.io.git/2020/12/22/a-biao-qian-shi-xian-tu-pian-xia-zai/</id>
+    <published>2020-12-22T07:32:10.000Z</published>
+    <updated>2020-12-22T08:21:07.397Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;最近项目中有个功能需求：通过调用接口，动态传参，下载一张二维码图片。&lt;/p&gt;
+&lt;p&gt;第一个方案：前端直接使用图片网络url，通过a标签实现了下载，也确实能够下载，而且支持跨域下载图片。但是目前这个业务，图片都是挂在阿里云oss服务上的，可能oss管理后台中开启了防盗链，跨域
+        
+      
+    
+    </summary>
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/categories/%E6%88%90%E9%95%BF/"/>
+    
+    
+      <category term="成长" scheme="https://GHwangxingren.github.io.git/tags/%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
   
   <entry>
     <title>axios的withCredentials问题</title>
